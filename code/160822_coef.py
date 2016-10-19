@@ -1,11 +1,12 @@
-# -*- coding: cp1252 -*-
 import numpy as np
 import matplotlib.pylab as mpl
+
+raw_input = input
 
 def fsin(x, f):
     return np.sin(x + f)
 
-print '# Somando três senos'
+print('# Somando trÃªs senos')
 x1 = float(raw_input('Valor inferior: '))
 x2 = float(raw_input('Valor superior: '))
 f = float(raw_input('Fase: '))
