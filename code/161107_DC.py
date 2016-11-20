@@ -52,20 +52,31 @@ def exercicio():
     # Fazendo os graficos
     figs = []
     axes = []
-    for x in range(4):
+    for x in range(5):
         figs.append(mpl.figure())
         axes.append(figs[x].add_subplot(111))
 
     # TODO Comentar graficos
     # Grafico da funcao original
-    axes[0].plot(t, f)
+    axes[0].plot(t, f, label = 'funcao original')
+    axes[0].legend()
     # Grafico da transformada de Fourier
-    axes[1].plot(w, f_hat)
+    axes[1].plot(w, f_hat, label = 'espectro de frequencias da funcao original')
+    axes[1].legend()
+    # Grafico da funcao com impulso
+    axes[4].plot(t, f_alt, label = 'funcao com impulso')
+    axes[4].legend()
     # Mostrando as janelas
-    axes[2].plot(w, f_100_hat)
-    axes[3].plot(w, f_300_hat)
+    axes[2].plot(w, f_100_hat, label = 'espetro de frequencias da funcao com delta de Dirac, janela em 100')
+    axes[2].legend()
+    axes[3].plot(w, f_300_hat, label = 'espetro de frequencias da funcao com delta de Dirac, janela em 300')
+    axes[3].legend()
 
     mpl.show()
+
+    print("""# Comentarios
+O grafico com o espectro janelado em 100 esta mais proximo do que o espectro janeado em 300,
+ja que a janela de 100 nao comtempla o pico contido no sinal.""")
 
 if __name__ == '__main__':
     exercicio()
