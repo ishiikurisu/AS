@@ -44,6 +44,10 @@ def exercicio():
     j_300 = janela(N, 300)
 
     # Aplicacao das janelas
+    f_100 = f_alt * j_100
+    f_300 = f_alt * j_300
+    f_100_hat = np.fft.fft(f_100)
+    f_300_hat = np.fft.fft(f_300)
 
     # Fazendo os graficos
     figs = []
@@ -52,13 +56,14 @@ def exercicio():
         figs.append(mpl.figure())
         axes.append(figs[x].add_subplot(111))
 
+    # TODO Comentar graficos
     # Grafico da funcao original
     axes[0].plot(t, f)
     # Grafico da transformada de Fourier
     axes[1].plot(w, f_hat)
     # Mostrando as janelas
-    axes[2].plot(t, j_100)
-    axes[3].plot(t, j_300)
+    axes[2].plot(w, f_100_hat)
+    axes[3].plot(w, f_300_hat)
 
     mpl.show()
 
