@@ -30,7 +30,7 @@ Para tanto, escolhemos o sinal identificado por "Sismologia-1.txt".
 
 def timestamp_to_integer(timestamp):
     # Example of timestamp: 2004-11-15T09:03:56.142200
-    digits = list(map(float, re.split(':', re.split('T', timestamp)[1])))
+    digits = map(float, re.split(':', re.split('T', timestamp)[1]))
     power = [60*60, 60, 1]
     time = sum(map(lambda x: x[0]*x[1], zip(digits, power)))
 
@@ -49,8 +49,20 @@ def load_signal():
     amplitude = list(map(float, amplitude[1:]))
     return time, amplitude
 
+def exercise1(time, amplitude):
+    no_samples = len(amplitude)
+
+    return 'O número de amostras é {0}'.format(no_samples)
+
+def exercise2(time, amplitude):
+    return 'TODO IMPLEMENTAR'
+
 if __name__ == '__main__':
     time, amplitude = load_signal()
+    exercises = [exercise1, exercise2]
+
+    for item, exercise in enumerate(exercises):
+        print("{0}. {1}".format(item+1, exercise(time, amplitude)))
 
     matplotlib.pyplot.plot(time, amplitude)
     matplotlib.pyplot.show()
