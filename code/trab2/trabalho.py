@@ -2,6 +2,7 @@
 import numpy
 import matplotlib.pyplot
 import re
+from functools import reduce
 
 SOBRE = """
 Trabalho de Análise de Sinais
@@ -27,6 +28,14 @@ Para tanto, escolhemos o sinal identificado por "Sismologia-1.txt".
 
 """
 
+def timestamp_to_integer(timestamp):
+    # Example of timestamp: 2004-11-15T09:03:56.142200
+    digits = list(map(float, re.split(':', re.split('T', timestamp)[1])))
+    power = [60*60, 60, 1]
+    time = sum(map(lambda x: x[0]*x[1], zip(digits, power)))
+
+    return time
+
 def load_signal():
     time, amplitude = [], []
 
@@ -36,12 +45,12 @@ def load_signal():
             time.append(raw_data[0])
             amplitude.append(raw_data[1])
 
-    time = time[1:]
+    time = list(map(timestamp_to_integer, time[1:]))
     amplitude = list(map(float, amplitude[1:]))
     return time, amplitude
 
 if __name__ == '__main__':
     time, amplitude = load_signal()
 
-    matplotlib.pyplot.plot(numpy.linspace(0, 100, len(amplitude)), amplitude)
+    matplotlib.pyplot.plot(time, amplitude)
     matplotlib.pyplot.show()
