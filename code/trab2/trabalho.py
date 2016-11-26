@@ -102,6 +102,15 @@ def exercise6(time, amplitude):
     return 'Veja o gráfico 3'
 
 def exercise7(time, amplitude):
+    nyquist_frequency = get_sample_rate(time) / 2
+    frequencies, frequency = fourier_transform(time, amplitude)
+    cutoff_frequency = 0.2 * nyquist_frequency
+    cutoff_frequencies = list(map(lambda f: 0 if abs(f) > cutoff_frequency else 1, frequencies))
+    filtered_frequencies = frequency * cutoff_frequencies
+    filtered_amplitude = numpy.fft.ifft(filtered_frequencies)
+
+    matplotlib.pyplot.plot(time, filtered_amplitude, label = 'Gráfico 4: representação do sinal filtrado')
+    matplotlib.pyplot.show()
     return 'TODO Passe um filtro passa baixa'
 
 if __name__ == '__main__':
