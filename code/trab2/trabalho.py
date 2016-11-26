@@ -16,13 +16,13 @@ Sobre
 
 Este trabalho visa analisar um sinal geofísico usando Python seguindo o roteiro fornecido pelo professor:
 
-1 – Qual o é número de amostras do seu dado?
+1 – Qual é o número de amostras do seu dado?
 2 – Qual é a taxa de amostragem?
 3 – Qual a frequência máxima que o seu sinal pode ser mostrado?
 4 – Faça o gráfico do seu sinal?
 5 – Apresente o sinal no domínio da frequência?
-6 – Passe um filtro  passa alta que elimine 20% do sinal que é possível amostrar. p.e. a frequência máxima é 100 Hz, você deve passa um filtro passa alta que elimine 0 a 20 Hz.
-7 -  Passe um filtro passa baixa que elimine 20% do sinal que é possível amostrar. p.e. a frequência máxima é 100 Hz, você deve passa um filtro passa baixe que elimine 80 a 100 Hz.
+6 – Passe um filtro  passa alta que elimine 20% do sinal que é possível amostrar. p.e. a frequência máxima é 100 Hz, você deve passar um filtro passa alta que elimine 0 a 20 Hz.
+7 -  Passe um filtro passa baixa que elimine 20% do sinal que é possível amostrar. p.e. a frequência máxima é 100 Hz, você deve passar um filtro passa baixe que elimine 80 a 100 Hz.
 
 Para tanto, escolhemos o sinal identificado por "Sismologia-1.txt".
 
@@ -74,7 +74,7 @@ def exercise2(time, amplitude):
     return 'A taxa de amostragem é {0} Hz'.format(sample_rate)
 
 def exercise3(time, amplitude):
-    nyquist_frequency = 2 * get_sample_rate(time)
+    nyquist_frequency = get_sample_rate(time) / 2
     return 'A frequência de Nyquist deste sinal é de {0}'.format(nyquist_frequency)
 
 def exercise4(time, amplitude):
@@ -88,9 +88,25 @@ def exercise5(time, amplitude):
     matplotlib.pyplot.show()
     return 'Veja o gráfico 2'
 
+def exercise6(time, amplitude):
+    nyquist_frequency = get_sample_rate(time) / 2
+    frequencies, frequency = fourier_transform(time, amplitude)
+    cutoff_frequency = 0.2 * nyquist_frequency
+    cutoff_frequencies = list(map(lambda f: 1 if abs(f) > cutoff_frequency else 0, frequencies))
+    filtered_frequencies = frequency * cutoff_frequencies
+    filtered_amplitude = numpy.fft.ifft(filtered_frequencies)
+
+    matplotlib.pyplot.plot(time, filtered_amplitude, label = 'Gráfico 3: representação do sinal filtrado')
+    matplotlib.pyplot.show()
+
+    return 'Veja o gráfico 3'
+
+def exercise7(time, amplitude):
+    return 'TODO Passe um filtro passa baixa'
+
 if __name__ == '__main__':
     time, amplitude = load_signal()
-    exercises = [exercise1, exercise2, exercise3, exercise4, exercise5]
+    exercises = [exercise1, exercise2, exercise3, exercise4, exercise5, exercise6, exercise7]
 
     for item, exercise in enumerate(exercises):
         print("{0}. {1}".format(item+1, exercise(time, amplitude)))
