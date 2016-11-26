@@ -55,7 +55,9 @@ def exercise1(time, amplitude):
     return 'O número de amostras é {0}'.format(no_samples)
 
 def exercise2(time, amplitude):
-    return 'TODO IMPLEMENTAR'
+    sample_rate = 1.0 / (time[1] - time[0])
+
+    return 'A taxa de amostragem é {0} Hz'.format(sample_rate)
 
 if __name__ == '__main__':
     time, amplitude = load_signal()
