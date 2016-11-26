@@ -28,6 +28,10 @@ Para tanto, escolhemos o sinal identificado por "Sismologia-1.txt".
 
 """
 
+######################
+# Auxiliar functions #
+######################
+
 def timestamp_to_integer(timestamp):
     # Example of timestamp: 2004-11-15T09:03:56.142200
     digits = map(float, re.split(':', re.split('T', timestamp)[1]))
@@ -49,22 +53,34 @@ def load_signal():
     amplitude = list(map(float, amplitude[1:]))
     return time, amplitude
 
+def get_sample_rate(time):
+    return 1.0 / (time[1] - time[0])
+
+#############
+# Exercises #
+#############
+
 def exercise1(time, amplitude):
     no_samples = len(amplitude)
-
     return 'O número de amostras é {0}'.format(no_samples)
 
 def exercise2(time, amplitude):
     sample_rate = 1.0 / (time[1] - time[0])
-
     return 'A taxa de amostragem é {0} Hz'.format(sample_rate)
+
+def exercise3(time, amplitude):
+    nyquist_frequency = 2 * get_sample_rate(time)
+    return 'A frequência de Nyquist deste sinal é de {0}'.format(nyquist_frequency)
+
+def exercise4(time, amplitude):
+    matplotlib.pyplot.plot(time, amplitude, label = 'Gráfico 1: representação gráfica do sinal')
+    return 'Veja o gráfico 1'
 
 if __name__ == '__main__':
     time, amplitude = load_signal()
-    exercises = [exercise1, exercise2]
+    exercises = [exercise1, exercise2, exercise3, exercise4]
 
     for item, exercise in enumerate(exercises):
         print("{0}. {1}".format(item+1, exercise(time, amplitude)))
 
-    matplotlib.pyplot.plot(time, amplitude)
     matplotlib.pyplot.show()
