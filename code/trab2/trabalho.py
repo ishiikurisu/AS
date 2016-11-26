@@ -56,6 +56,11 @@ def load_signal():
 def get_sample_rate(time):
     return 1.0 / (time[1] - time[0])
 
+def fourier_transform(time, amplitude):
+    frequency = numpy.fft.fft(amplitude)
+    frequencies = numpy.fft.fftfreq(len(time), time[1] - time[0])
+    return frequencies, frequency
+
 #############
 # Exercises #
 #############
@@ -74,13 +79,18 @@ def exercise3(time, amplitude):
 
 def exercise4(time, amplitude):
     matplotlib.pyplot.plot(time, amplitude, label = 'Gráfico 1: representação gráfica do sinal')
+    matplotlib.pyplot.show()
     return 'Veja o gráfico 1'
+
+def exercise5(time, amplitude):
+    freqs, freq = fourier_transform(time, amplitude)
+    matplotlib.pyplot.plot(freqs, freq, label = 'Gráfico 2: representação do espectro de frequências')
+    matplotlib.pyplot.show()
+    return 'Veja o gráfico 2'
 
 if __name__ == '__main__':
     time, amplitude = load_signal()
-    exercises = [exercise1, exercise2, exercise3, exercise4]
+    exercises = [exercise1, exercise2, exercise3, exercise4, exercise5]
 
     for item, exercise in enumerate(exercises):
         print("{0}. {1}".format(item+1, exercise(time, amplitude)))
-
-    matplotlib.pyplot.show()
