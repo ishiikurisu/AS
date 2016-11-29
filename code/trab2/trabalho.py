@@ -76,7 +76,7 @@ def exercise2(time, amplitude):
 def exercise3(time, amplitude):
     nyquist_frequency = get_sample_rate(time) / 2
     return 'A frequência de Nyquist deste sinal é de {0}'.format(nyquist_frequency)
-
+    
 def exercise4(time, amplitude):
     matplotlib.pyplot.plot(time, amplitude, label = 'Gráfico 1: representação gráfica do sinal')
     matplotlib.pyplot.show()
