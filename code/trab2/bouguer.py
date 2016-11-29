@@ -2,6 +2,7 @@
 import numpy
 import matplotlib.pyplot
 import re
+from functools import reduce
 
 SOBRE = """
 Trabalho de Análise de Sinais
