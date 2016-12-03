@@ -28,27 +28,6 @@ Este trabalho visa analisar um sinal geofísico usando Python seguindo o roteiro
 # Auxiliar functions #
 ######################
 
-def timestamp_to_integer(timestamp):
-    # Example of timestamp: 2004-11-15T09:03:56.142200
-    digits = map(float, re.split(':', re.split('T', timestamp)[1]))
-    power = [60*60, 60, 1]
-    time = sum(map(lambda x: x[0]*x[1], zip(digits, power)))
-
-    return time
-
-def load_signal():
-    time, amplitude = [], []
-
-    with open('Sismologia-1.txt', 'r') as fp:
-        for line in fp:
-            raw_data = re.split('\\s+', line)
-            time.append(raw_data[0])
-            amplitude.append(raw_data[1])
-
-    time = list(map(timestamp_to_integer, time[1:]))
-    amplitude = list(map(float, amplitude[1:]))
-    return time, amplitude
-
 def get_sample_rate(time):
     return 1.0 / (time[1] - time[0])
 
@@ -109,7 +88,7 @@ def exercise7(time, amplitude):
     matplotlib.pyplot.show()
     return 'Veja o gráfico 4'
 
-if __name__ == '__main__':
+def main(load_signal):
     time, amplitude = load_signal()
     exercises = [exercise1, exercise2, exercise3, exercise4, exercise5, exercise6, exercise7]
 
