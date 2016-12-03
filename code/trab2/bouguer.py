@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import numpy
-import matplotlib.pyplot
 import re
 from trabalho import *
 

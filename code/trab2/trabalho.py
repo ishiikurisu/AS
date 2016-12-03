@@ -41,29 +41,36 @@ def fourier_transform(time, amplitude):
 #############
 
 def exercise1(time, amplitude):
+    """Esta função calcula o número de amostras do sinal."""
     no_samples = len(amplitude)
     return 'O número de amostras é {0}'.format(no_samples)
 
 def exercise2(time, amplitude):
+    """Aqui temos o procedimento para se calcular a taxa de amostragem do sinal."""
     sample_rate = 1.0 / (time[1] - time[0])
     return 'A taxa de amostragem é {0} Hz'.format(sample_rate)
 
 def exercise3(time, amplitude):
+    """Esta função busca calcular a frequência de Nyquist do sinal; isto é, a maior frequência amostrável do sinal."""
     nyquist_frequency = get_sample_rate(time) / 2
     return 'A frequência de Nyquist deste sinal é de {0}'.format(nyquist_frequency)
 
 def exercise4(time, amplitude):
+    """Demonstração do sinal no domínio do tempo."""
     matplotlib.pyplot.plot(time, amplitude, label = 'Gráfico 1: representação gráfica do sinal')
     matplotlib.pyplot.show()
     return 'Veja o gráfico 1'
 
 def exercise5(time, amplitude):
+    """Plota o sinal no domínio da frequência"""
     freqs, freq = fourier_transform(time, amplitude)
     matplotlib.pyplot.plot(freqs, freq, label = 'Gráfico 2: representação do espectro de frequências')
     matplotlib.pyplot.show()
     return 'Veja o gráfico 2'
 
 def exercise6(time, amplitude):
+    """Passa um filtro passa-alta no sinal, sobrando somente as 20% frequências superiores amostráveis do sinal
+    e mostra o resultado da filtragem no domínio do tempo."""
     nyquist_frequency = get_sample_rate(time) / 2
     frequencies, frequency = fourier_transform(time, amplitude)
     cutoff_frequency = 0.2 * nyquist_frequency
@@ -77,6 +84,8 @@ def exercise6(time, amplitude):
     return 'Veja o gráfico 3'
 
 def exercise7(time, amplitude):
+    """Passa um filtro passa baixa no sinal, deixando passar somente as 80% frequências inferiores do sinal. Por fim,
+    mostra o sinal filtrado no domínio do tempo."""
     nyquist_frequency = get_sample_rate(time) / 2
     frequencies, frequency = fourier_transform(time, amplitude)
     cutoff_frequency = 0.8 * nyquist_frequency

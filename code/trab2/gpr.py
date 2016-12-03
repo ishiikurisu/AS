@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-import numpy
-import matplotlib.pyplot
 import re
-from functools import reduce
 from trabalho import *
 
 SOBRE = """
