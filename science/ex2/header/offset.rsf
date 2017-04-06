@@ -1,0 +1,139 @@
+1.8-svn	sfspike	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	unit1="s"
+	d1=0.002
+	n1=2000
+	in="stdin"
+
+1.8-svn	sfpad	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	end1=2000
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	n1=4000
+	in="stdin"
+
+1.8-svn	sfricker1	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.8-svn	sfwindow	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	unit1="s"
+	d1=0.002
+	n1=2000
+	in="stdin"
+
+1.8-svn	sfscale	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.8-svn	sfput	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	data_format="native_float"
+	in="/var/tmp/AS/science/ex2/wav_.rsf@"
+	label1=t
+1.8-svn	sftransp	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	d2=0.002
+	n2=2000
+	o2=0
+	data_format="native_float"
+	label2="t"
+	esize=4
+	in="/var/tmp/AS/science/ex2/wav.rsf@"
+	unit2="s"
+	n1=1
+1.8-svn	sfawefd2d	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+
+	d2=0.002
+	n2=2000
+	o1=0
+	o2=0
+	label1="r"
+	data_format="native_float"
+	label2="t"
+	esize=4
+	in="/var/tmp/AS/science/ex2/data-0.rsf@"
+	unit1=""
+	unit2="s"
+	d1=10
+	n1=700
+1.8-svn	sfadd	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:04:41 2017
+
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/AS/science/ex2/data_sub-0.rsf@"
+1.8-svn	sfcat	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:04:41 2017
+
+	d3=10
+	n3=1
+	data_format="native_float"
+	o3=1000
+	esize=4
+	in="/var/tmp/AS/science/ex2/cube.rsf@"
+1.8-svn	sftransp	science/ex2/header:	cris@linux-u6t6.suse	Thu Apr  6 11:04:49 2017
+
+	o1=0
+	d2=10
+	n2=700
+	label1="t"
+	o2=0
+	data_format="native_float"
+	label2="r"
+	esize=4
+	in="/var/tmp/science/ex2/header/cubetransp.rsf@"
+	unit1="s"
+	unit2=""
+	d1=0.002
+	n1=2000
+1.8-svn	sfwindow	science/ex2/header:	cris@linux-u6t6.suse	Thu Apr  6 11:07:49 2017
+
+	d2=10
+	n2=700
+	o1=0
+	o2=0
+	label1="t"
+	data_format="native_float"
+	label2="r"
+	esize=4
+	in="stdout"
+	squeeze=n
+	unit1="s"
+	unit2=""
+	d1=0.002
+	n1=1
+	in="stdin"
+
+1.8-svn	sfmath	science/ex2/header:	cris@linux-u6t6.suse	Thu Apr  6 11:07:49 2017
+
+	x2=2
+	input=0
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	x1=1
+	in="stdin"
+
+1.8-svn	sfdd	science/ex2/header:	cris@linux-u6t6.suse	Thu Apr  6 11:07:49 2017
+
+	data_format="native_int"
+	esize=4
+	in="/var/tmp/science/ex2/header/offset.rsf@"

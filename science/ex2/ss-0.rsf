@@ -1,0 +1,10 @@
+1.8-svn	sfspike	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/AS/science/ex2/ss-0.rsf@"
+	unit1="s"
+	d1=0.004
+	n1=2
