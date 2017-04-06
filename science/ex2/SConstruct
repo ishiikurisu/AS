@@ -12,7 +12,7 @@ par = {
     'snap':'n',
     'nb':200,
     'height':8
-    }
+}
 
 # Set other modeling parameters
 fd.param(par)
@@ -50,7 +50,7 @@ par['ntopl1'] = (par['topl1']/par['dz'])
 
 # one-shot source position (meters)
 par['sx'] = 1000
-par['dsx'] = 10. 
+par['dsx'] = 10.
 #par['nsx'] = 500
 par['nsx'] = 1
 par['sz'] = 0
@@ -67,7 +67,7 @@ par['rz']= 0
 
 Flow('Dens',None,
      '''
-     spike mag=%(dens)g 
+     spike mag=%(dens)g
      n1=%(nz)d o1=%(oz)g d1=%(dz)g
      n2=%(nx)d o2=%(ox)g d2=%(dx)g |
      put label1=%(lz)s label2=%(lx)s unit1=%(uz)s unit2=%(ux)s
@@ -76,7 +76,7 @@ Flow('Dens',None,
 
 # Velocity model
 
-Flow('Vel_fundo', None, 
+Flow('Vel_fundo', None,
      '''
      spike n1=%(nz)d o1=%(oz)g d1=%(dz)g
      	 n2=%(nx)d o2=%(ox)g d2=%(dx)g
@@ -92,7 +92,7 @@ Flow('top0',None,
 	''' % par)
 Flow('mid0','top0',
 	'''
-	math output="input*(1+(x1-%(edge2)g)*%(m)g/%(edge1)g)" 
+	math output="input*(1+(x1-%(edge2)g)*%(m)g/%(edge1)g)"
 	''' % par)
 Flow('bot0',None,
 	'''spike n1=%(nedge2)g d1=%(dx)g  mag=4500
@@ -131,7 +131,7 @@ fd.horizontal('rr',par['rz'],par)
 
 #------------------------------------------------------------
 ## Ploting models
-Plot('wedge0', fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j  screenht=4.7 
+Plot('wedge0', fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j  screenht=4.7
                      ''' , par))
 
 
@@ -170,7 +170,7 @@ for i in range(par['nsx']):
 
     # onda direta
     fd.awefd('data_direta-'+count,  # data file (all receivers)
-		   'wfld_direta-'+count,  # wavefield snapshots
+		     'wfld_direta-'+count,  # wavefield snapshots
              'wav',   # source wavelet
              'Vel_fundo',  # velocity
              'Dens',  # density
@@ -204,5 +204,3 @@ Result('data_sub-0','data_sub-0',
 
 
 End()
-
-
