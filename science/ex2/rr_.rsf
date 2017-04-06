@@ -1,0 +1,9 @@
+1.8-svn	sfmath	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 09:55:09 2017
+
+	o1=0
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/AS/science/ex2/rr_.rsf@"
+	x1=0
+	d1=10
+	n1=700

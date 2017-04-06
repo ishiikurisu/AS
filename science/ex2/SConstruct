@@ -49,6 +49,7 @@ par['ntopl1'] = (par['topl1']/par['dz'])
 
 
 # one-shot source position (meters)
+# par['sx'] = 3000
 par['sx'] = 1000
 par['dsx'] = 10.
 #par['nsx'] = 500
@@ -79,11 +80,11 @@ Flow('Dens',None,
 Flow('Vel_fundo', None,
      '''
      spike n1=%(nz)d o1=%(oz)g d1=%(dz)g
-     	 n2=%(nx)d o2=%(ox)g d2=%(dx)g
-     	 mag=%(lV1)g
-		 k1=%(ntopl1)g
-	      l1=%(nz)g
-		 label1=%(lz)s label2=%(lx)s unit1=%(uz)s unit2=%(ux)s |
+     	   n2=%(nx)d o2=%(ox)g d2=%(dx)g
+     	   mag=%(lV1)g
+		   k1=%(ntopl1)g
+	       l1=%(nz)g
+		   label1=%(lz)s label2=%(lx)s unit1=%(uz)s unit2=%(ux)s |
      smooth rect1=3 repeat=3
      ''' % par)
 
@@ -100,12 +101,12 @@ Flow('bot0',None,
 Flow('wedgecoord0','mid0 bot0',
      '''
      cat axis=1 ${SOURCES[1:2]}
-	''' % par)
+	 ''' % par)
 Flow('wedge0','wedgecoord0',
-	'''
+	 '''
      unif2 n1=%(nz)d o1=0 d1=%(dz)g v00=1500,2000 |
-	smooth rect1=3 rect2=6 repeat=3 |
-	dd type=float form=native
+	 smooth rect1=3 rect2=6 repeat=3 |
+	 dd type=float form=native
      ''' % par )
 
 
@@ -135,11 +136,13 @@ Plot('wedge0', fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j  screenht
                      ''' , par))
 
 
-Plot('ss-9',fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',par))
+# Plot('ss-9',fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',par))
+Plot('ss-0',fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',par))
 Plot('rr', 'window j2=10 |' +
                fd.rrplot('wantscalebar=y  screenht=4.7 symbol=v plotcol=2 symbolsz=5 ',par))
 
-Result('Vel',['wedge0','ss-9','rr'],'Overlay')
+# Result('Vel',['wedge0','ss-9','rr'],'Overlay')
+Result('Vel',['wedge0','ss-0','rr'],'Overlay')
 
 # ------------------------------------------------------------
 # construct wavelet
@@ -158,7 +161,7 @@ Result('wav','window n2=500 |'
 for i in range(par['nsx']):
     count = str(i) # Convert integer to string
     fd.awefd('data-'+count,  # data file (all receivers)
-		   'wfld-'+count,  # wavefield snapshots
+		     'wfld-'+count,  # wavefield snapshots
              'wav',   # source wavelet
              'wedge0',  # velocity
              'Dens',  # density

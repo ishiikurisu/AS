@@ -1,0 +1,23 @@
+1.8-svn	sfspike	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 09:55:09 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/AS/science/ex2/top0.rsf@"
+	unit1="s"
+	d1=10
+	n1=350
+1.8-svn	sfmath	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 09:55:09 2017
+
+	input=0
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/AS/science/ex2/mid0.rsf@"
+	x1=1
+1.8-svn	sfcat	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 09:55:09 2017
+
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/AS/science/ex2/wedgecoord0.rsf@"
+	n1=700
