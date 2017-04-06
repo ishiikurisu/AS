@@ -14,7 +14,7 @@
 	esize=4
 	in="/var/tmp/science/stuff/arbitrary_underground/rr_x.rsf@"
 	x1=1
-1.8-svn	sfcat	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:30:52 2017
+1.8-svn	sfcat	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:52:29 2017
 
 	n2=2
 	data_format="native_float"
@@ -22,7 +22,7 @@
 	in="stdout"
 	in="stdin"
 
-1.8-svn	sftransp	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:30:52 2017
+1.8-svn	sftransp	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:52:29 2017
 
 	d2=2
 	n2=601
@@ -33,7 +33,7 @@
 	n1=2
 	in="stdin"
 
-1.8-svn	sfput	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:30:52 2017
+1.8-svn	sfput	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:52:29 2017
 
 	in="/var/tmp/science/stuff/arbitrary_underground/rr.rsf@"
 	label1=

@@ -1,5 +1,6 @@
 from rsf.proj import *
 import fdmod as fd
+import numpy as np
 
 # ------------------------------------------------------------
 ## Modeling parameters
@@ -32,11 +33,13 @@ par['lV3'] = 600. # actually lV3 - lV2. That is, lV3 = 2600.
 # layers' top and bottom (m)
 par['topl1'] = 0.
 par['topl2'] = 150.
-par['topl3'] = 300.
+
+# par['topl2'] = 150 + 20*np.sin(2*np.pi*200*np.arange(1202))
+par['topl3'] = 300., 350.
 
 par['ntopl1'] = (par['topl1']/par['dz'])
 par['ntopl2'] = (par['topl2']/par['dz']) + 1
-par['ntopl3'] = (par['topl3']/par['dz']) + 1
+par['ntopl3'] = (par['topl3']/par['dz']) + 1,
 
 
 # one-shot source position
@@ -44,7 +47,7 @@ par['sx'] = 250.
 par['sz'] = 80.
 
 # receiver array depth
-par['rz']=30.
+par['rz'] = 30.
 
 
 #------------------------------------------------------------
@@ -66,11 +69,11 @@ Flow('Dens', None,
 Flow('Vel', None,
      '''
      spike n1=%(nz)d o1=%(oz)g d1=%(dz)g
-     	 n2=%(nx)d o2=%(ox)g d2=%(dx)g
-     	 nsp=3 mag=%(lV1)g,%(lV2)g,%(lV3)g
-		 k1=%(ntopl1)g,%(ntopl2)g,%(ntopl3)g
-	      l1=%(nz)g,%(nz)g,%(nz)g
-		 label1=%(lz)s label2=%(lx)s unit1=%(uz)s unit2=%(ux)s |
+     	   n2=%(nx)d o2=%(ox)g d2=%(dx)g
+     	   nsp=3 mag=%(lV1)g,%(lV2)g,%(lV3)g
+		   k1=%(ntopl1)g,%(ntopl2)g,%(ntopl3)g
+	       l1=%(nz)g,%(nz)g,%(nz)g
+		   label1=%(lz)s label2=%(lx)s unit1=%(uz)s unit2=%(ux)s |
      smooth rect1=3 repeat=3
      ''' % par)
 
@@ -85,8 +88,7 @@ fd.horizontal('rr', par['rz'], par)
 
 #------------------------------------------------------------
 ## Ploting models
-Plot('Vel', fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j
-                     ''' , par))
+Plot('Vel', fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j''' , par))
 
 
 Plot('ss',fd.ssplot('wantscalebar=y symbol=* plotcol=0 symbolsz=7',par))

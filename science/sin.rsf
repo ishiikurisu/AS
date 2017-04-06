@@ -1,0 +1,9 @@
+1.8-svn	sfmath	cris/Documents/AS:	cris@linux-u6t6.suse	Mon Mar 20 10:34:34 2017
+
+	o1=0
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/sin.rsf@"
+	x1=0
+	d1=1
+	n1=1000

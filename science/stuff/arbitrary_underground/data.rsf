@@ -61,7 +61,7 @@
 	in="/var/tmp/science/stuff/arbitrary_underground/wav.rsf@"
 	unit2="s"
 	n1=1
-1.8-svn	sfawefd2d	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:30:53 2017
+1.8-svn	sfawefd2d	science/stuff/arbitrary_underground:	cris@linux-u6t6.suse	Mon Mar 13 09:52:29 2017
 
 	d2=0.0004
 	n2=1601
