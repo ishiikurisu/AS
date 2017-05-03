@@ -1,4 +1,4 @@
-2.0-git	sfspike	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:34 2017
+2.0-git	sfspike	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:19 2017
 
 	d2=10
 	o1=0
@@ -15,9 +15,9 @@
 	n1=250
 	in="stdin"
 
-2.0-git	sfput	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:34 2017
+2.0-git	sfput	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:19 2017
 
-	in="/var/tmp/vagrant/science/ex2/sfputx2H3Yf"
+	in="/var/tmp/vagrant/science/ex2.2/sfputq3CWQG"
 	label1=z
 	data_format="native_float"
 	unit1=m

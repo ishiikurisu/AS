@@ -1,4 +1,4 @@
-1.8-svn	sfspike	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfspike	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	d2=10
 	o1=0
@@ -15,8 +15,8 @@
 	n1=250
 	in="stdin"
 
-1.8-svn	sfsmooth	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfsmooth	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
 	esize=4
-	in="/var/tmp/AS/science/ex2/Vel_fundo.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sfsmoothaeqER9"

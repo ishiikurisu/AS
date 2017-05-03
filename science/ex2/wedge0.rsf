@@ -1,27 +1,27 @@
-1.8-svn	sfspike	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfspike	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	o1=0
 	label1="Time"
 	data_format="native_float"
 	esize=4
-	in="/var/tmp/AS/science/ex2/top0.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sfspikekCUqXK"
 	unit1="s"
 	d1=10
 	n1=350
-1.8-svn	sfmath	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfmath	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	input=0
 	data_format="native_float"
 	esize=4
-	in="/var/tmp/AS/science/ex2/mid0.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sfmathSHQv1Q"
 	x1=1
-1.8-svn	sfcat	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfcat	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
 	esize=4
-	in="/var/tmp/AS/science/ex2/wedgecoord0.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sfcatCj8mIR"
 	n1=700
-1.8-svn	sfunif2	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfunif2	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	o1=0
 	d2=10
@@ -38,15 +38,15 @@
 	n1=250
 	in="stdin"
 
-1.8-svn	sfsmooth	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfsmooth	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
 	esize=4
 	in="stdout"
 	in="stdin"
 
-1.8-svn	sfdd	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:52 2017
+2.0-git	sfdd	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
 	esize=4
-	in="/var/tmp/AS/science/ex2/wedge0.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sfddYWGXwr"

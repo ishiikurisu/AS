@@ -1,4 +1,4 @@
-1.8-svn	sfspike	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sfspike	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	o1=0
 	label1="Time"
@@ -10,7 +10,7 @@
 	n1=2000
 	in="stdin"
 
-1.8-svn	sfpad	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sfpad	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	end1=2000
 	data_format="native_float"
@@ -19,14 +19,14 @@
 	n1=4000
 	in="stdin"
 
-1.8-svn	sfricker1	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sfricker1	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
 	esize=4
 	in="stdout"
 	in="stdin"
 
-1.8-svn	sfwindow	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sfwindow	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	o1=0
 	label1="Time"
@@ -38,19 +38,19 @@
 	n1=2000
 	in="stdin"
 
-1.8-svn	sfscale	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sfscale	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
 	esize=4
 	in="stdout"
 	in="stdin"
 
-1.8-svn	sfput	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sfput	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	data_format="native_float"
-	in="/var/tmp/AS/science/ex2/wav_.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sfputwmN5F0"
 	label1=t
-1.8-svn	sftransp	AS/science/ex2:	cris@linux-u6t6.suse	Thu Apr  6 11:01:53 2017
+2.0-git	sftransp	vagrant/science/ex2:	vagrant@precise64	Wed May  3 20:49:35 2017
 
 	d2=0.002
 	n2=2000
@@ -58,6 +58,6 @@
 	data_format="native_float"
 	label2="t"
 	esize=4
-	in="/var/tmp/AS/science/ex2/wav.rsf@"
+	in="/var/tmp/vagrant/science/ex2/sftranspltc2t2"
 	unit2="s"
 	n1=1

@@ -1,0 +1,83 @@
+2.0-git	sfspike	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	unit1="s"
+	d1=0.002
+	n1=2000
+	in="stdin"
+
+2.0-git	sfpad	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	end1=2000
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	n1=4000
+	in="stdin"
+
+2.0-git	sfricker1	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+2.0-git	sfwindow	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	unit1="s"
+	d1=0.002
+	n1=2000
+	in="stdin"
+
+2.0-git	sfscale	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+2.0-git	sfput	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	data_format="native_float"
+	in="/var/tmp/vagrant/science/ex2.2/sfputJ9GpnM"
+	label1=t
+2.0-git	sftransp	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	d2=0.002
+	n2=2000
+	o2=0
+	data_format="native_float"
+	label2="t"
+	esize=4
+	in="/var/tmp/vagrant/science/ex2.2/sftranspkAigDN"
+	unit2="s"
+	n1=1
+2.0-git	sfawefd2d	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:27:20 2017
+
+	d2=0.002
+	n2=2000
+	o1=0
+	o2=0
+	label1="r"
+	data_format="native_float"
+	label2="t"
+	esize=4
+	in="/var/tmp/vagrant/science/ex2.2/sfawefd2dnYgGDy"
+	unit1=""
+	unit2="s"
+	d1=10
+	n1=700
+2.0-git	sfadd	vagrant/science/ex2.2:	vagrant@precise64	Wed May  3 20:29:15 2017
+
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/vagrant/science/ex2.2/sfaddecDcGr"
