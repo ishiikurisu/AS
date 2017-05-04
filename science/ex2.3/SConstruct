@@ -17,43 +17,34 @@ par = {
 # Set other modeling parameters
 fd.param(par)
 
-
 # ------------------------------------------------------------
 ## Model and acquisition geometry parameters
 par['dens'] = 1.
 par['freq'] = 20.
 
-
 # Edge position (m)
 par['edge1'] = 1500
 par['edge2'] = 3500
-
 par['nedge1'] = (par['edge1']/par['dz'])
 par['nedge2'] = (par['edge2']/par['dx'])
 
 # Dip angle
 par['m'] = 0.1
 
-
 # Layer's velocities (m/s)
 par['lV1'] = 1500.
 par['lV2'] = 500. # actually lV2 - lV1. That is, lV2 = 2000.
 
-
 # layers' top and bottom (m)
 par['topl1'] = 0
-
-
 par['ntopl1'] = (par['topl1']/par['dz'])
-
 
 
 # one-shot source position (meters)
 # par['sx'] = 3000
 par['sx'] = 1000
 par['dsx'] = 10.
-#par['nsx'] = 500
-par['nsx'] = 1
+par['nsx'] = 10 # or 1 or 10 or 100
 par['sz'] = 0
 
 
@@ -74,7 +65,6 @@ Flow('Dens',None,
      put label1=%(lz)s label2=%(lx)s unit1=%(uz)s unit2=%(ux)s
      ''' % par)
 
-
 # Velocity model
 
 Flow('Vel_fundo', None,
@@ -92,16 +82,12 @@ Flow('top0',None,
 	 '''
      spike n1=%(nedge2)g d1=%(dx)g o1=0 mag=%(edge1)g
 	 ''' % par)
-# Flow('mid0','top0',
-# 	 '''
-# 	 math output="input*(1+(x1-%(edge2)g)*%(m)g/%(edge1)g)"
-# 	 ''' % par)
+# TODO Change this line to a bell shape
 Flow('mid0', 'top0', '''
                      math output="%(edge1)g + 500*sin(x1 / 500)"
                      ''' % par)
-Flow('bot0',None,
-	 '''spike n1=%(nedge2)g d1=%(dx)g  mag=4500
-	 ''' % par)
+Flow('bot0', None,
+	 '''spike n1=%(nedge2)g d1=%(dx)g  mag=4500''' % par)
 Flow('wedgecoord0','mid0 bot0',
      '''
      cat axis=1 ${SOURCES[1:2]}
@@ -121,12 +107,9 @@ Result('wedge0',
 ## Set up acquisition geometry
 
 for i in range(par['nsx']):
-    count = str(i) # Convert integer to string
-    ssx = par['sx'] + i*par['dsx']
-    fd.point('ss-'+count, ssx, par['sz'],par)
-
-
-
+  count = str(i) # Convert integer to string
+  ssx = par['sx'] + i*par['dsx']
+  fd.point('ss-'+count, ssx, par['sz'],par)
 
 # source point
 fd.point('ss', par['sx'], par['sz'],par)
@@ -136,17 +119,19 @@ fd.horizontal('rr',par['rz'],par)
 
 #------------------------------------------------------------
 ## Ploting models
-Plot('wedge0', fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j  screenht=4.7
-                     ''' , par))
-
-
-# Plot('ss-9',fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',par))
-Plot('ss-0',fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',par))
-Plot('rr', 'window j2=10 |' +
-               fd.rrplot('wantscalebar=y  screenht=4.7 symbol=v plotcol=2 symbolsz=5 ',par))
-
-# Result('Vel',['wedge0','ss-9','rr'],'Overlay')
-Result('Vel',['wedge0','ss-0','rr'],'Overlay')
+Plot('wedge0',
+     fd.cgrey('''wantscalebar=y allpos=y title="Vel" color=j  screenht=4.7''',
+              par))
+Plot('ss-9',
+     fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',
+               par))
+Plot('ss-0',
+     fd.ssplot('wantscalebar=y  screenht=4.7 symbol=* plotcol=0 symbolsz=7 ',
+               par))
+Plot('rr',
+     'window j2=10 |' + fd.rrplot('wantscalebar=y  screenht=4.7 symbol=v plotcol=2 symbolsz=5',
+                                  par))
+Result('Vel', ['wedge0','ss-9','rr'], 'Overlay')
 
 # ------------------------------------------------------------
 # construct wavelet
@@ -163,50 +148,45 @@ Result('wav','window n2=500 |'
 # ------------------------------------------------------------
 # run FD modeling
 for i in range(par['nsx']):
-    count = str(i) # Convert integer to string
-    fd.awefd('data-'+count,  # data file (all receivers)
-		     'wfld-'+count,  # wavefield snapshots
-             'wav',   # source wavelet
-             'wedge0',  # velocity
-             'Dens',  # density
-             'ss-'+count,    # source coordinates
-             'rr',    # receiver coordinates
-             'free=n',# optional flags
-             par)
+  count = str(i) # Convert integer to string
+  fd.awefd('data-' + count,  # data file (all receivers)
+           'wfld-' + count,  # wavefield snapshots
+           'wav',            # source wavelet
+           'wedge0',         # velocity
+           'Dens',           # density
+           'ss-'+count,      # source coordinates
+           'rr',             # receiver coordinates
+           'free=n',         # optional flags
+           par)
 
 
-    # onda direta
-    fd.awefd('data_direta-'+count,  # data file (all receivers)
-		     'wfld_direta-'+count,  # wavefield snapshots
-             'wav',   # source wavelet
-             'Vel_fundo',  # velocity
-             'Dens',  # density
-             'ss-'+count,    # source coordinates
-             'rr',    # receiver coordinates
-             'free=n',# optional flags
-             par)
+  # onda direta
+  fd.awefd('data_direta-'+count,  # data file (all receivers)
+           'wfld_direta-'+count,  # wavefield snapshots
+           'wav',                 # source wavelet
+           'Vel_fundo',           # velocity
+           'Dens',                # density
+           'ss-'+count,           # source coordinates
+           'rr',                  # receiver coordinates
+           'free=n',              # optional flags
+  par)
 
-datalist=[]
+datalist = [ ]
 for i in range(par['nsx']):
-    count = str(i)
-    Flow('data_sub-'+count, ['data-'+count, 'data_direta-'+count] , 'add ${SOURCES[1]} scale=1,-1')
-    datalist.append('data_sub-'+count)
-
+  count = str(i)
+  Flow('data_sub-'+count, ['data-'+count, 'data_direta-'+count] , 'add ${SOURCES[1]} scale=1,-1')
+  datalist.append('data_sub-'+count)
 print datalist
 
 Flow('cube', datalist, '''cat ${SOURCES[0:%(nsx)d - 1]} d=%(dsx)g o=%(sx)g''' % par)
-
-Result('cube','cube',
-          'transp |' + fd.dgrey('title="Data cube" pclip=99 screenht=4.7',par))
-
-#Plot('wfld_fundo-0', fd.wgrey('title="Wavefield" pclip=99 screenht=4.7',par))
-
+Result('cube',
+       'cube',
+       'transp |' + fd.dgrey('title="Data cube" pclip=99 screenht=4.7', par))
+Plot('wfld_fundo-0', fd.wgrey('title="Wavefield" pclip=99 screenht=4.7', par))
 Plot('data1',
      'data-0',
      'transp | window j2=10 |' + fd.dwigl('title="Recorded data"',par))
 Result('data2','data-0', 'transp |' + fd.dgrey('title="Recorded data" pclip=99 screenht=4.7',par))
-
 Result('data_sub-0','data_sub-0', 'transp |' + fd.dgrey('title="Recorded data" pclip=99 screenht=4.7',par))
-
 
 End()
