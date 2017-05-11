@@ -40,12 +40,12 @@ Flow('offsetmask','header','''
 
 Flow('zerooffset','cubetransp offsetmask','''
 	  headerwindow mask=${SOURCES[1]} |
-	  put label1=Time unit1=s label2=Distance unit2=m o2=250
+	  put label1=Time unit1=s label2=Distance unit2=m o2=1000
 	  ''')
 
 Result('zerooffset','''
  	   grey wantscalebar=y allpos=y title="Zero Offset"
-	   color=j screenht=4.7 o2=250
+	   color=j screenht=4.7 o2=1000
 	   ''')
 #Flow('cubeoffset maskoffset', 'cubetransp header', 'intbin xk=offset ykey=sx head=${SOURCES[1]} mask=${TARGETS[1]}')
 

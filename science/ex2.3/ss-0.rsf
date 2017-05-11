@@ -1,0 +1,10 @@
+2.0-git	sfspike	vagrant/science/ex2.3:	vagrant@precise64	Thu May 11 19:53:21 2017
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="/var/tmp/vagrant/science/ex2.3/sfspikewykl2s"
+	unit1="s"
+	d1=0.004
+	n1=2

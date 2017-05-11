@@ -1,0 +1,56 @@
+from rsf.proj import *
+
+Flow('cubetransp','../cube.rsf','''transp plane=12''')
+
+# Create "Field record number" header value from n3
+Flow('tracl','cubetransp','''
+     window n1=1 squeeze=n |
+     headermath output="N+1" |
+     dd type=int''')
+
+# Create "Group coordinate" header value from n2
+Flow('gx','cubetransp','''
+     window n1=1 squeeze=n |
+     math output="x2" |
+     dd type=int''')
+
+# Create "Source coordinate" header value from n3
+Flow('sx','cubetransp','''
+     window n1=1 squeeze=n |
+     math output="x3" |
+     dd type=int''')
+
+# Create "Offset" header value from n2 and n3
+Flow('offset','cubetransp','''
+     window n1=1 squeeze=n |
+     math output="x2-x3" |
+     dd type=int''')
+
+Flow('header',['cubetransp','tracl','gx','sx','offset'],'''
+     segyheader tracl=${SOURCES[1]}
+                gx=${SOURCES[2]}
+                sx=${SOURCES[3]}
+                offset=${SOURCES[4]}
+     ''')
+
+Flow('offsetmask','header','''
+	 headermath output="offset" |
+	 mask min=0 max=0
+	 ''')
+
+Flow('zerooffset','cubetransp offsetmask','''
+	  headerwindow mask=${SOURCES[1]} |
+	  put label1=Time unit1=s label2=Distance unit2=m o2=1000
+	  ''')
+
+Result('zerooffset','''
+ 	   grey wantscalebar=y allpos=y title="Zero Offset"
+	   color=j screenht=4.7 o2=1000
+	   ''')
+#Flow('cubeoffset maskoffset', 'cubetransp header', 'intbin xk=offset ykey=sx head=${SOURCES[1]} mask=${TARGETS[1]}')
+
+Flow('cube.sgy',['cubetransp','header'],'''
+     segywrite tape=${TARGETS[0]} tfile=${SOURCES[1]}
+     ''', stdout=0)
+
+End ()

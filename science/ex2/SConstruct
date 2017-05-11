@@ -195,7 +195,7 @@ Flow('cube', datalist, '''cat ${SOURCES[0:%(nsx)d - 1]} d=%(dsx)g o=%(sx)g''' % 
 Result('cube','cube',
           'transp |' + fd.dgrey('title="Data cube" pclip=99 screenht=4.7',par))
 
-#Plot('wfld_fundo-0', fd.wgrey('title="Wavefield" pclip=99 screenht=4.7',par))
+Plot('wfld_fundo-0', fd.wgrey('title="Wavefield" pclip=99 screenht=4.7',par))
 
 Plot('data1','data-0',
           'transp | window j2=10 |' + fd.dwigl('title="Recorded data"',par))
